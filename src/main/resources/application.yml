@@ -1,0 +1,42 @@
+quarkus:
+  datasource:
+    db-kind: postgresql
+    username: postgres
+    password: root
+    jdbc:
+      driver: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:15432/sheet-rpg
+  hibernate-orm:
+    database:
+      generation: drop-and-create
+    log:
+      sql : true
+  http:
+    cors:
+      origins: http://localhost:5173
+      methods: GET,POST,OPTIONS
+      nodeValue: 'true'
+      headers: accept, authorization, content-type, x-requested-with
+    port: 8081
+  smallrye-openapi:
+    info-license-name: Apache 2.0
+    info-contact-url: http://exampleurl.com/contact
+    info-title: Example API
+    info-terms-of-service: Your terms here
+    info-license-url: https://www.apache.org/licenses/LICENSE-2.0.html
+    info-version: 1.0.1
+    info-contact-email: techsupport@example.com
+    info-description: Just an example service
+    info-contact-name: Example API Support
+  swagger-ui:
+    path: /swagger
+  devservices:
+    enabled: false
+"%test":
+  quarkus:
+    smallrye-openapi:
+      info-title: Example API (test)
+"%dev":
+  quarkus:
+    smallrye-openapi:
+      info-title: Example API (development)
